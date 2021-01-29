@@ -7,11 +7,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div id="logo">
+    <ion-icon name="trash-bin-outline" class="ion-text-center"></ion-icon>
+  </div>
+  <div id="searchBox">
+    <ion-searchbar autocomplete="photo"></ion-searchbar>
+    <ion-button  color="success" expand="block" fill="solid">Begin Gathering</ion-button>
+  </div>
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>
