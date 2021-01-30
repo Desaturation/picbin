@@ -5,7 +5,6 @@
     height: 300px;
     position: relative;
     text-align: center;
-    color: white;
 
 }
 
@@ -20,17 +19,15 @@ ion-icon{
     margin: 10px;
 }
 
-img{
+img.logoBack{
     object-fit: cover;
     height: 300px;
     width: fit-content;
+    opacity: 0.5;
 }
 
-// div#icons{
-//     height: 100px;
-// }
-
 .icon{
+    text-align: center;
     margin: 24px auto;
     height: 80px;
     object-fit: contain;
