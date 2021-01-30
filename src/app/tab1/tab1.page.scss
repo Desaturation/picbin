@@ -1,9 +1,39 @@
 #logo {
     text-align: center;
-    margin: 48px auto;
+    margin: 24px auto;
     font-size: 200px;
+    height: 300px;
+    position: relative;
+    text-align: center;
+    color: white;
+
+}
+
+ion-icon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #searchBox{
     margin: 10px;
+}
+
+img{
+    object-fit: cover;
+    height: 300px;
+    width: fit-content;
+}
+
+// div#icons{
+//     height: 100px;
+// }
+
+.icon{
+    margin: 24px auto;
+    height: 80px;
+    object-fit: contain;
+    display: inline-block;
+    padding: .25rem;
 }

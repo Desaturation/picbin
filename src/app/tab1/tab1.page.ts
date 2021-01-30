@@ -22,7 +22,7 @@ export class Tab1Page implements OnInit{
     this.imgService.getRandomImg().subscribe(
       (data) => {
         this.result = data;
-        this.img = this.result.data.image_url;
+        this.img = this.result.urls.small;
         console.log(this.img);
         this.isLoading = false;
       },

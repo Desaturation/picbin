@@ -14,7 +14,8 @@ export class ImgSearchService {
   constructor(private http: HttpClient) { }
 
   getRandomImg(): Observable<Response> {
-    return this.http.get<Response>(`https://api.unsplash.com/photos/?page=${this.page}&per_page=${this.per_page}&client_id=${this.APIKEY}`);
+    return this.http.get<Response>(`https://api.unsplash.com/photos/random?client_id=${this.APIKEY}`);
+    // return this.http.get<Response>(`https://api.unsplash.com/photos/?page=${this.page}&per_page=${this.per_page}&client_id=${this.APIKEY}`);
   }
 
   searchImg(offset, limit, text): Observable<Response>{

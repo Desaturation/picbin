@@ -1,18 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Search Menu
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div id="logo">
+    <img src={{img}}/>
     <ion-icon name="trash-bin-outline" class="ion-text-center"></ion-icon>
   </div>
   <div id="searchBox">
     <ion-searchbar autocomplete="photo"></ion-searchbar>
     <ion-button  color="success" expand="block" fill="solid">Begin Gathering</ion-button>
   </div>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+          <a href="https://unsplash.com/"><img class="icon" src="assets/unsplash_logo.jpg"></a>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <a href="https://www.pexels.com/"><img class="icon" src="assets/pixabay_logo.png"></a>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <a href="https://pixabay.com/sk/"><img class="icon" src="assets/pexels_logo.png"></a>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>
