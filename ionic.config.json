@@ -1,5 +1,7 @@
 {
   "name": "picbin",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
