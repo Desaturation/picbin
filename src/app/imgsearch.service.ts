@@ -15,10 +15,18 @@ export class ImgSearchService {
 
   getRandomImg(): Observable<Response> {
     return this.http.get<Response>(`https://api.unsplash.com/photos/random?client_id=${this.APIKEY}`);
-    // return this.http.get<Response>(`https://api.unsplash.com/photos/?page=${this.page}&per_page=${this.per_page}&client_id=${this.APIKEY}`);
   }
 
-  searchImg(offset, limit, text): Observable<Response>{
-    return this.http.get<Response>(this.giphyAPIBase + '?client_id=' + this.APIKEY + '&offset=' + offset + '&limit=' + limit + '&query=' + text);
+  getImg(): Observable<Response>{
+    return this.http.get<Response>(`https://api.unsplash.com/photos/?page=${this.page}&per_page=${this.per_page}&client_id=${this.APIKEY}`);
+  }
+
+  searchImg(query): Observable<Response>{
+    if(query == ''){
+      return this.http.get<Response>(`https://api.unsplash.com/photos/?page=${this.page}&per_page=${this.per_page}&client_id=${this.APIKEY}`);
+    }
+    else{
+    return this.http.get<Response>(`https://api.unsplash.com/search/photos?client_id=${this.APIKEY}&query=${query}&page=${this.page}&per_page=${this.per_page}`);
+    }
   }
 }
