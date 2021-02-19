@@ -10,7 +10,7 @@ export class ImgSearchService {
   private giphyAPIBase = 'https://api.unsplash.com/photos/'
   private APIKEY = '3LFTdHt8Pg9GVT9CJIbv1298fAwavvACnCBRFiJYsKI';
   page = 1;
-  per_page = 21;
+  per_page = 24;
   constructor(private http: HttpClient) { }
 
   getRandomImg(): Observable<Response> {

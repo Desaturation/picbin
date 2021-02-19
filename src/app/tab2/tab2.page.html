@@ -14,12 +14,19 @@
   </ion-header>
 
   <div class="container">
-    <div class="" Style="height: 80vh; width:50%">
-      <div class="border" *ngFor="let image of images">
-      <img src="{{ image.urls.small }}" alt="" />
-      </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let image of images">
+          <div class="img-wrapper">
+            <img  src="{{ image.urls.small }}" (click)="openModal(image)" />
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
       <input type="button" value="Load More" class="btn btn-primary btn-block" *ngIf="!isLoading" (click)="getMore()">
-    </div>
+      <ion-button (click)="openModal()">Open Modal</ion-button>
+
+      <p *ngIf="dataReturned">{{dataReturned}}</p>
   </div>
 
 

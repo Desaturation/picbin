@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ImgSearchService } from "../imgsearch.service";
+import { ModalController } from '@ionic/angular';
+import { ImageModalPage } from "../image-modal/image-modal.page";
+
 
 @Component({
   selector: 'app-tab2',
@@ -9,11 +12,39 @@ import { ImgSearchService } from "../imgsearch.service";
 export class Tab2Page {
   results:any;
   images = [];
-  constructor(private imgSearcher: ImgSearchService) {}
+  query = 'banana';
+  dataReturned: any;
+
+  constructor(private imgSearcher: ImgSearchService, public modalController: ModalController) {}
+
+  async openModal(image) {
+    const modal = await this.modalController.create({
+      component: ImageModalPage,
+      componentProps: {
+        // "paramID": "image.id",
+        // "paramTitle": "Test Title",
+        "imageObj": image
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+
+    return await modal.present();
+  }
 
   ngOnInit(){
-    this.imgSearcher.searchImg('').subscribe( res => {
-      this.images = res['results'];
+    this.imgSearcher.searchImg(this.query).subscribe( res => {
+      if(this.query == ''){
+        this.images = this.images.concat(res);
+      }
+      else{
+        this.images = res['results'];
+      }
       console.log(res);
       console.log(this.images);
       // this.isLoading = false;
