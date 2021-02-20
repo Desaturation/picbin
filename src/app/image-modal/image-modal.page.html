@@ -15,12 +15,17 @@
     </ion-row>
     <ion-row>
       <ion-col text-center>
-        Photo By: {{imageObj.user.name}}
+        Photo By: <a href="{{imageObj.user.links.html}}" target="_blank">{{imageObj.user.name}}</a>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col text-center>
-        Tags: {{modelTitle}}
+        Tags: 
+            <span *ngFor="let tag of tags">
+              <div class="tag" (click)="search(tag);closeModal()">
+                {{tag}}
+              </div>
+            </span>
       </ion-col>
     </ion-row>
     <ion-row>

@@ -12,7 +12,7 @@ import { ImageModalPage } from "../image-modal/image-modal.page";
 export class Tab2Page {
   results:any;
   images = [];
-  query = 'banana';
+  query = '';
   dataReturned: any;
 
   constructor(private imgSearcher: ImgSearchService, public modalController: ModalController) {}
@@ -21,8 +21,6 @@ export class Tab2Page {
     const modal = await this.modalController.create({
       component: ImageModalPage,
       componentProps: {
-        // "paramID": "image.id",
-        // "paramTitle": "Test Title",
         "imageObj": image
       }
     });
@@ -30,12 +28,40 @@ export class Tab2Page {
     modal.onDidDismiss().then((dataReturned) => {
       if (dataReturned !== null) {
         this.dataReturned = dataReturned.data;
+        this.ionViewWillEnter();
         //alert('Modal Sent Data :'+ dataReturned);
       }
     });
 
     return await modal.present();
   }
+
+  search(query){
+    this.query = query;
+    this.imgSearcher.searchImg(this.query).subscribe( res => {
+      if(this.query == ''){
+        this.images = [];
+        this.images = this.images.concat(res);
+      }
+      else{
+        this.images = res['results'];
+      }
+      // console.log(res);
+      // console.log(this.images);
+      // this.isLoading = false;
+    },
+    (err) => console.log('Ooops!', err),
+    () => console.log(Response, this.results)
+    )
+
+  }
+
+  ionViewWillEnter(){
+    this.query = localStorage.getItem('query');
+    // console.log("Did data load? : ",this.query);
+    this.search(this.query);
+  }
+
 
   ngOnInit(){
     this.imgSearcher.searchImg(this.query).subscribe( res => {
@@ -46,7 +72,6 @@ export class Tab2Page {
         this.images = res['results'];
       }
       console.log(res);
-      console.log(this.images);
       // this.isLoading = false;
     },
     (err) => console.log('Ooops!', err),

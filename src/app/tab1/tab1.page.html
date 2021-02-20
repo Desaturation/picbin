@@ -1,10 +1,10 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Pic Bin
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
   <div id="logo">
@@ -12,16 +12,16 @@
     <ion-icon name="trash-bin-outline" class="ion-text-center"></ion-icon>
   </div>
   <div id="searchBox">
-    <ion-searchbar autocomplete="photo"></ion-searchbar>
-    <ion-button  color="success" expand="block" fill="solid">Begin Gathering</ion-button>
+    <ion-searchbar #searchQuery autocomplete="photo"></ion-searchbar>
+    <ion-button  color="success" expand="block" fill="solid" (click)="search(searchQuery.value)">Begin Gathering</ion-button>
   </div>
 
 
   <ion-grid>
     <ion-row>
-      <ion-col>
-        <div>
-          <a href="https://unsplash.com/"><img class="icon" src="assets/unsplash_logo.jpg"></a>
+      <ion-col >
+        <div >
+          <a href="https://unsplash.com/"><img style="width: auto;" class="icon" src="assets/unsplash_logo.jpg"></a>
         </div>
       </ion-col>
       <ion-col>
@@ -36,5 +36,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>
