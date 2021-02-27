@@ -21,13 +21,12 @@ export class ImageModalPage implements OnInit {
     console.table(this.navParams);
     this.modelId = this.imageObj.id;
     this.modalTitle = this.imageObj.user.name;
-    console.log(this.imageObj.tags[1].title);
     
     this.imageObj.tags.forEach(element => {
-      // console.log(element);
-      //console.log(element.title);
+      console.log(element);
+      console.log(element.title);
       this.tags.push(element.title);
-     // console.log(this.tags);
+      console.log(this.tags);
     });
     
   }

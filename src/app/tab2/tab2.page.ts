@@ -14,6 +14,8 @@ export class Tab2Page {
   images = [];
   query = '';
   dataReturned: any;
+  public isLoading: boolean = true;
+  offset = 1;
 
   constructor(private imgSearcher: ImgSearchService, public modalController: ModalController) {}
 
@@ -28,17 +30,38 @@ export class Tab2Page {
     modal.onDidDismiss().then((dataReturned) => {
       if (dataReturned !== null) {
         this.dataReturned = dataReturned.data;
-        this.ionViewWillEnter();
+        
         //alert('Modal Sent Data :'+ dataReturned);
       }
+      this.search(this.query);
     });
 
     return await modal.present();
   }
 
+  getMore(){
+      this.isLoading = true;
+      this.offset = this.offset + this.imgSearcher.page;
+      this.imgSearcher.searchImg(this.query, this.offset).subscribe( res => {
+        if(this.query == ''){
+          // this.images = [];
+          this.images = this.images.concat(res);
+        }
+        else{
+          this.images = this.images.concat(res['results']);
+        }
+        console.log(this.offset);
+        console.log(this.images);
+        this.isLoading = false;
+      },
+      (err) => console.log('Ooops!', err),
+      () => console.log(Response, this.results)
+      )
+  }
+
   search(query){
     this.query = query;
-    this.imgSearcher.searchImg(this.query).subscribe( res => {
+    this.imgSearcher.searchImg(this.query, 0).subscribe( res => {
       if(this.query == ''){
         this.images = [];
         this.images = this.images.concat(res);
@@ -48,7 +71,7 @@ export class Tab2Page {
       }
       // console.log(res);
       // console.log(this.images);
-      // this.isLoading = false;
+      this.isLoading = false;
     },
     (err) => console.log('Ooops!', err),
     () => console.log(Response, this.results)
@@ -64,7 +87,7 @@ export class Tab2Page {
 
 
   ngOnInit(){
-    this.imgSearcher.searchImg(this.query).subscribe( res => {
+    this.imgSearcher.searchImg(this.query, 0).subscribe( res => {
       if(this.query == ''){
         this.images = this.images.concat(res);
       }

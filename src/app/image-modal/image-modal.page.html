@@ -19,12 +19,12 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col text-center>
+      <ion-col *ngIf="tags.length > 0" text-center>
         Tags: 
             <span *ngFor="let tag of tags">
-              <div class="tag" (click)="search(tag);closeModal()">
+              <span class="tag" (click)="search(tag);closeModal()">
                 {{tag}}
-              </div>
+              </span>
             </span>
       </ion-col>
     </ion-row>

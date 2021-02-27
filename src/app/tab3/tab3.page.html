@@ -13,5 +13,25 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-button expand="block" *ngIf="!isLoading" (click)="downloadZip()" style="margin:5px 5%;">Download All</ion-button>
+  <div class="container">
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeLg="4" sizeMd="4" sizeXs="12" *ngFor="let obj of libObjs">
+          <div class="img-wrapper">
+            <ion-col sizeLg="4" sizeMd="4" sizeXs="9">
+                <img src="{{ obj.urls.small }}" (click)="openModal(image)" />
+            </ion-col>
+            <ion-col  sizeXs="3">
+              <ion-button class="ion-float-right" (click)="download()"><ion-icon name="arrow-down-circle"></ion-icon></ion-button>
+              <ion-button class="ion-float-right" (click)="remove()"><ion-icon name="trash"></ion-icon></ion-button>
+             </ion-col>
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+    </div>
+
   
 </ion-content>
