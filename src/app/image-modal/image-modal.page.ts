@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, NavParams } from "@ionic/angular";
+import { LibrarianService } from "../librarian.service";
 
 @Component({
   selector: 'app-image-modal',
@@ -14,7 +15,7 @@ export class ImageModalPage implements OnInit {
   imageObj: any;
   tags =[];
 
-  constructor(private modalController: ModalController, private navParams: NavParams, private router: Router) { 
+  constructor(private modalController: ModalController, private navParams: NavParams, private router: Router, private lib: LibrarianService) { 
    }
 
   ngOnInit() {
@@ -31,10 +32,15 @@ export class ImageModalPage implements OnInit {
     
   }
   search(query){
-    console.log(query);
+    // console.log(query);
     localStorage.setItem('query', query);
     this.router.navigateByUrl("/tabs/tab2");
 
+  }
+
+  addImg(){
+    console.log(this.imageObj);
+    this.lib.addPhoto(this.imageObj);
   }
 
   async closeModal() {
