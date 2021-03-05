@@ -15,8 +15,8 @@ export class LibrarianService {
     console.log(this.libItems);
   }
 
-  remPhoto(){
-
+  remPhoto(id: string){
+      this.libItems = this.libItems.filter(pic => pic.id != id);
   }
 
   downPhoto(){

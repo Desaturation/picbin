@@ -30,9 +30,8 @@ export class Tab2Page {
     modal.onDidDismiss().then((dataReturned) => {
       if (dataReturned !== null) {
         this.dataReturned = dataReturned.data;
-        
-        //alert('Modal Sent Data :'+ dataReturned);
       }
+      this.ionViewWillEnter();
       this.search(this.query);
     });
 

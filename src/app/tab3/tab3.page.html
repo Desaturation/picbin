@@ -20,11 +20,11 @@
 
       <ion-row *ngFor="let obj of libObjs">
         <ion-col  sizeXs="9"  >
-            <img src="{{ obj.urls.small }}"/>
+            <img id="picture" src="{{ obj.urls.small }}"/>
         </ion-col>
         <ion-col sizeXs="3">
-          <ion-button class="ion-float-left" color="secondary"(click)="download()"><ion-icon name="arrow-down-circle"></ion-icon></ion-button>
-          <ion-button class="ion-float-left" color="danger" (click)="remove()"><ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button class="ion-float-left" color="secondary" href="{{ obj.links.download }}" download><ion-icon name="arrow-down-circle"></ion-icon></ion-button>
+          <ion-button class="ion-float-left" color="danger" (click)="remove(obj.id)"><ion-icon name="trash"></ion-icon></ion-button>
         </ion-col>
       </ion-row>
 
