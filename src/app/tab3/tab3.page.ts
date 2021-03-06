@@ -3,10 +3,9 @@ import { ImgSearchService } from "../imgsearch.service";
 import { ModalController } from '@ionic/angular';
 import { ImageModalPage } from "../image-modal/image-modal.page";
 import { LibrarianService } from "../librarian.service";
-import { JSZipUtils } from "jszip-utils";
-import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 import * as JSZip from 'jszip';
-import { utils } from 'protractor';
+import { saveAs } from 'file-saver';
+
 
 @Component({
   selector: 'app-tab3',
@@ -28,32 +27,29 @@ export class Tab3Page {
     }
 
   downloadZip(){
-// var zip = new JSZip();
-//     var clientKey = '3LFTdHt8Pg9GVT9CJIbv1298fAwavvACnCBRFiJYsKI';
+var zip = new JSZip();
+    var clientKey = '3LFTdHt8Pg9GVT9CJIbv1298fAwavvACnCBRFiJYsKI';
 
-//     this.libObjs.forEach((f, i) => {
-//       let url = f.links.download;
-//       // var imageBlob = fetch(`${f.links.download}?client_id=${clientKey}`).then(response => response.blob());
-//       console.log(f.links.download);
-//       zip.file(`image${i}.jpg`, this.urlToPromise(url), { base64: true });
-//     });
+    this.libObjs.forEach((f, i) => {
+      let url = f.links.download;
+      var imageBlob = fetch(`${f.urls.small}?client_id=${clientKey}`).then(response => response.blob());
+      // console.log(imageBlob);
+      zip.file(`image${i}.jpg`, imageBlob, { base64: true });
 
-//     zip.generateAsync({type:"blob"})
-//     .then(function (blob) {
-//     saveAs(blob, "hello.zip");
-// });
+    });
+
+    zip.generateAsync({type:"blob"})
+    .then(function (blob) {
+    saveAs(blob, "hello.zip");
+});
+    
+    // var FileSaver = require('file-saver');
+    // this.libObjs.forEach((f, i) => {
+    // FileSaver.saveAs(`${f.urls.small}?client_id=${clientKey}`, `image${i}.jpg`);
+    
+    // });
 
 
-{
-  var pdf = new jsPDF('p', 'pt', 'letter');
-  let canvas =document.getElementById('barcode');
-  console.log(canvas);
-  let dataURL = canvas.toDataURL("image/jpeg");
-  pdf.addImage(dataURL, 'JPEG', 15, 40, 180, 160);
-  function (dispose) {
-     pdf.output('datauri');
-  }, margins);
-}
   }
 
   remove(id: string){
@@ -68,7 +64,7 @@ export class Tab3Page {
 
   ionViewWillEnter(){
     this.libObjs = this.lib.getLib()
-    console.log(this.libObjs.toString);
+    // console.log(this.libObjs.toString);
   }
 
 }

@@ -9,10 +9,10 @@ export class LibrarianService {
   constructor() { }
 
   addPhoto(toAdd){
-    console.log(toAdd);
+    // console.log(toAdd);
     this.libItems = this.libItems.concat(toAdd);
     localStorage.setItem('library', JSON.stringify(this.libItems));
-    console.log(this.libItems);
+    // console.log(this.libItems);
   }
 
   remPhoto(id: string){
@@ -37,6 +37,6 @@ export class LibrarianService {
 
   ngOnInit(){
     this.libItems = JSON.parse(localStorage.getItem('library'));
-    console.log(this.libItems);
+    // console.log(this.libItems);
   }
 }

@@ -49,8 +49,8 @@ export class Tab2Page {
         else{
           this.images = this.images.concat(res['results']);
         }
-        console.log(this.offset);
-        console.log(this.images);
+        // console.log(this.offset);
+        // console.log(this.images);
         this.isLoading = false;
       },
       (err) => console.log('Ooops!', err),
@@ -93,7 +93,7 @@ export class Tab2Page {
       else{
         this.images = res['results'];
       }
-      console.log(res);
+      // console.log(res);
       // this.isLoading = false;
     },
     (err) => console.log('Ooops!', err),

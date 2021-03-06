@@ -19,15 +19,15 @@ export class ImageModalPage implements OnInit {
    }
 
   ngOnInit() {
-    console.table(this.navParams);
+    // console.table(this.navParams);
     this.modelId = this.imageObj.id;
     this.modalTitle = this.imageObj.user.name;
     
     this.imageObj.tags.forEach(element => {
-      console.log(element);
-      console.log(element.title);
+      // console.log(element);
+      // console.log(element.title);
       this.tags.push(element.title);
-      console.log(this.tags);
+      // console.log(this.tags);
     });
     
   }
@@ -39,7 +39,7 @@ export class ImageModalPage implements OnInit {
   }
 
   addImg(){
-    console.log(this.imageObj);
+    // console.log(this.imageObj);
     this.lib.addPhoto(this.imageObj);
   }
 

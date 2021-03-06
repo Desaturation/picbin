@@ -25,7 +25,7 @@ export class Tab1Page implements OnInit{
       (data) => {
         this.result = data;
         this.img = this.result.urls.small;
-        console.log(this.img);
+        // console.log(this.img);
         this.isLoading = false;
       },
       (err) =>  console.log('Oops!', err),
@@ -34,7 +34,7 @@ export class Tab1Page implements OnInit{
   }
 
   search(query){
-    console.log(query);
+    // console.log(query);
     localStorage.setItem('query', query);
     this.router.navigateByUrl("/tabs/tab2");
 

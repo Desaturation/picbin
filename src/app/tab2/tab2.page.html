@@ -17,7 +17,7 @@
     <ion-searchbar placeholder="Search for an Image" #searchText (keyup.enter)="search(searchText.value)"></ion-searchbar>
     <ion-grid>
       <ion-row>
-        <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let image of images">
+        <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let image of images;">
           <div class="img-wrapper">
             <img src="{{ image.urls.small }}" (click)="openModal(image)" />
           </div>

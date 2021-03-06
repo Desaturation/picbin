@@ -20,7 +20,7 @@
     </ion-row>
     <ion-row>
       <ion-col *ngIf="tags.length > 0" text-center>
-        Tags: 
+        Tags:
             <span *ngFor="let tag of tags">
               <span class="tag" (click)="search(tag);closeModal()">
                 {{tag}}
