@@ -60,6 +60,7 @@ export class Tab2Page {
 
   search(query){
     this.query = query;
+    localStorage.setItem('query', query);
     this.imgSearcher.searchImg(this.query, 0).subscribe( res => {
       if(this.query == ''){
         this.images = [];

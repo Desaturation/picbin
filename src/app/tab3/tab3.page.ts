@@ -40,7 +40,7 @@ var zip = new JSZip();
 
     zip.generateAsync({type:"blob"})
     .then(function (blob) {
-    saveAs(blob, "hello.zip");
+    saveAs(blob, "Images.zip");
 });
     
     // var FileSaver = require('file-saver');
